@@ -12,4 +12,12 @@
     <select id="login" resultType="Customer">
         select * from customer where password = #{customer.password} and nickname = #{customer.nickName}
   </select>
+
+    <update id="register">
+        insert into customer(id, customer_name, phone, password,status,role,nickname) values (#{customer.id},#{customer.customerName},#{customer.phone},#{customer.password},#{customer.status},#{customer.role},#{customer.nickName})
+    </update>
+
+    <select id="queryCustomerByNickName" resultType="Customer">
+        select * from customer where nickname = #{nickname}
+    </select>
 </mapper>

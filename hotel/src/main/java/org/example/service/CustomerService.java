@@ -9,4 +9,5 @@ import org.example.unit.Result;
  */
 public interface CustomerService {
     Result login(Customer customer);
+    Result register(Customer customer);
 }

@@ -23,9 +23,15 @@
     <junit-version>4.13.2</junit-version>
     <log4j-api.version>2.21.1</log4j-api.version>
     <log4j-core.version>2.21.1</log4j-core.version>
+    <spring-version>5.3.23</spring-version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -103,6 +109,12 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>${log4j-core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
