@@ -29,4 +29,9 @@ public class Customer {
 
     //  角色（0客户，1管理员）
     private Integer role;
+
+    public Customer(String nickName, String password) {
+        this.nickName = nickName;
+        this.password = password;
+    }
 }
