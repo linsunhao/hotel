@@ -2,11 +2,10 @@ package org.example.controller;
 
 import org.example.dao.RoomMapper;
 import org.example.entity.Room;
+import org.example.service.RoomService;
+import org.example.unit.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,12 +19,22 @@ import java.util.List;
 public class RoomController {
     @Autowired
     private RoomMapper roomMapper;
+
+    @Autowired
+    private RoomService roomService;
+
     @GetMapping("/all")
     public List<Room> QueryAll() throws IOException {
         return roomMapper.selectAllRoom();
     }
-    @GetMapping("/tid/{typeid}")
+
+    @GetMapping("/{typeid}")
     public List<Room> QueryByTypeId(@PathVariable("typeid") int typeId) throws IOException {
         return roomMapper.selectRoomByTypeId(typeId);
+    }
+
+    @GetMapping("/typeandstatus")
+    public Result getAllRoomByTypeId(@RequestParam("typeId") Integer typeId, @RequestParam("status") String status){
+        return roomService.getAllRoomByTypeId(typeId, status);
     }
 }

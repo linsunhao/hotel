@@ -21,4 +21,9 @@ public class CustomerController {
     public Result login(@RequestBody Customer customer){
         return customerService.login(customer);
     }
+
+    @PostMapping("/register")
+    public Result register(@RequestBody Customer customer){
+        return customerService.register(customer);
+    }
 }

@@ -12,7 +12,22 @@
   <select id="selectAllRoom" resultType="org.example.entity.Room">
   select * from room;
   </select>
+
   <select id="selectRoomByTypeId" resultType="org.example.entity.Room">
   select * from room where type_id=#{id};
+  </select>
+
+  <update id="setRoomByStatus">
+    update room set status = #{id} where no = #{no}
+  </update>
+
+  <select id="getAllRoomByTypeId" resultType="Room">
+    select * from room
+    <where>
+      type_id = #{typeId}
+    <if test="status != null">
+      and status = #{status}
+    </if>
+    </where>
   </select>
 </mapper>
