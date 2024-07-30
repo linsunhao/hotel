@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--XML映射文件-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--naemspace属性中写mapper类的类名-->
+<mapper namespace="org.example.dao.RoomTypeMapper">
+    <!--    查询功能的标签需要设置resultType或resultMap
+        resultType:设置默认的映射关系（属性与字段名一致）
+        resultMap:设置自定义的映射关系（属性与字段名不一致，如一对多）
+        -->
+    <select id="queryAllRoomType" resultType="RoomType">
+    select *
+    from room_type;
+    </select>
+    <select id="queryRoomTypeId" resultType="RoomType">
+    select * from room_type where id= ${id};
+    </select>
+    <select id="queryRoomTypeName" resultType="RoomType">
+    select * from room_type where type_name like '%${name}%';
+    </select>
+    <insert id="insertRoomType" parameterType="org.example.entity.RoomType">
+        insert into room_type(type_name, price, number, info) VALUES (#{typeName},#{price},#{number},#{info});
+    </insert>
+    <delete id="deleteRoomType" parameterType="java.lang.String">
+        delete from room_type where type_name=#{name}
+    </delete>
+
+</mapper>

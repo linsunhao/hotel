@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--核心配置文件-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--    settings用于设置全局配置(不用的话可删除)-->
+    <settings>
+        <setting name="logImpl" value="LOG4J2"/>
+        <!--        mapUnderscoreToCamelCase将_自动映射为驼峰（大写字母），emp_name &ndash;&gt; empName-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--        开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
+    <!--    类型别名设置-->
+    <typeAliases>
+        <package name="org.example.entity"/>
+    </typeAliases>
+
+</configuration>
