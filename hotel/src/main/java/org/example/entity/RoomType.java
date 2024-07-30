@@ -1,10 +1,17 @@
 package org.example.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @Auther sun
  * @Time 2024/7/29 下午3:18
  */
-public class RootType {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RoomType {
     //  房型id
     private Integer id;
 

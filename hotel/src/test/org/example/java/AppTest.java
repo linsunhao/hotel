@@ -1,7 +1,9 @@
 
 import org.example.config.SpringConfig;
 import org.example.dao.CustomerMapper;
+import org.example.dao.RoomTypeMapper;
 import org.example.entity.Customer;
+import org.example.entity.RoomType;
 import org.example.service.CustomerService;
 import org.example.unit.Result;
 import org.junit.Test;
@@ -10,6 +12,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.util.List;
 
 /**
  * @Auther sun
@@ -28,8 +32,8 @@ public class AppTest {
     @Test
     public void daoTest(){
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        CustomerMapper bean = applicationContext.getBean(CustomerMapper.class);
-        Integer register = bean.register(new Customer(null, "小奥奇", "赖佳奇", "123456", "Y", 0, "18596672881"));
-        System.out.println(register);
+        RoomTypeMapper bean = applicationContext.getBean(RoomTypeMapper.class);
+        List<RoomType> roomTypes = bean.queryAllRoomType();
+        System.out.println(roomTypes);
     }
 }
