@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--XML映射文件-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--naemspace属性中写mapper类的类名-->
+<mapper namespace="org.example.dao.OrderMapper">
+    <!--    查询功能的标签需要设置resultType或resultMap
+        resultType:设置默认的映射关系（属性与字段名一致）
+        resultMap:设置自定义的映射关系（属性与字段名不一致，如一对多）
+        -->
+    <insert id="takeOrder">
+        insert into `order`(id,customer_id,room_id,status,amount,begin_time,end_time) values (#{order.id},#{order.customerId},#{order.roomId},#{order.status},#{order.amount},#{order.beginTime},#{order.endTime})
+    </insert>
+
+    <update id="payOrder">
+        update `order` set status = "已支付" where id = #{id}
+    </update>
+
+    <select id="getAllOrderById" resultType="Order">
+        select * from `order`
+        <where>
+            customer_id = #{id}
+        <if test="status != null and status != ''">
+            and status = #{status}
+        </if>
+        </where>
+    </select>
+</mapper>

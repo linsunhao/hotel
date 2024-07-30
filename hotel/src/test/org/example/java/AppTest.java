@@ -1,8 +1,10 @@
 
 import org.example.config.SpringConfig;
 import org.example.dao.CustomerMapper;
+import org.example.dao.OrderMapper;
 import org.example.dao.RoomTypeMapper;
 import org.example.entity.Customer;
+import org.example.entity.Order;
 import org.example.entity.RoomType;
 import org.example.service.CustomerService;
 import org.example.unit.Result;
@@ -13,6 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -32,8 +36,14 @@ public class AppTest {
     @Test
     public void daoTest(){
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        RoomTypeMapper bean = applicationContext.getBean(RoomTypeMapper.class);
-        List<RoomType> roomTypes = bean.queryAllRoomType();
-        System.out.println(roomTypes);
+        OrderMapper bean = applicationContext.getBean(OrderMapper.class);
+        List<Order> allOrderById = bean.getAllOrderById(4, "已预定");
+        System.out.println(allOrderById);
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒");
+//        LocalDateTime.parse("")
+//        bean.takeOrder(new Order(null,4,1,"已预约",60,))
+//        System.out.println(roomTypes);
+//        LocalDateTime localDateTime = LocalDateTime.now();
+//        System.out.println(localDateTime);
     }
 }

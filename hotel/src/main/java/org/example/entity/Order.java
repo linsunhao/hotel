@@ -1,8 +1,10 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -29,9 +31,11 @@ public class Order {
     //  订单金额
     private double amount;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTF+8")
     //  下单日期
     private LocalDateTime beginTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTF+8")
     //  结束日期
     private LocalDateTime endTime;
 }
