@@ -16,8 +16,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-
     @PostMapping("/takeorder")
     public Result takeOrder(@RequestBody Order order){
         Result result = orderService.takeOrder(order);

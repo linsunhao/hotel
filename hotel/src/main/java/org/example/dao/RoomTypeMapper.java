@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface RoomTypeMapper {
     List<RoomType> queryAllRoomType();
+    List<RoomType> queryRoomTypeId(int id);
+    List<RoomType> queryRoomTypeName(String roomTypeName);
+    int insertRoomType(RoomType roomType);
+    int deleteRoomType(String name);
 }
